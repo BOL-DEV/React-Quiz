@@ -1,20 +1,13 @@
-import { useQuiz } from "../context/QuizContext";
-
-const Option = ({ question }) => {
-  const { dispatch, answer} = useQuiz();
-
-  const hasAnswer = answer !== null;
-
-  // if (status !== "ready") return;
-
+const Option = ({ questions, dispatch, answer }) => {
+  const hasAnswer = answer !== null
 
   return (
     <div className="option">
-      {question.options.map((option, index) => (
+      {questions.options.map((option, index) => (
         <button
           className={`btn btn-option ${index === answer} ? answer : "" ${
             hasAnswer
-              ? index === question.correctOption
+              ? index === questions.correctOption
                 ? "correct"
                 : "wrong"
               : ""
